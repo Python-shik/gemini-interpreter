@@ -2,7 +2,7 @@ import datetime
 import os
 import subprocess
 import sys
-import time, cv2
+import time
 import platform
 import fnc
 from src.AI import prompts
