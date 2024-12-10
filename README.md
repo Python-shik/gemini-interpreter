@@ -1,69 +1,70 @@
+
 # Gemini-Interpreter
 
-Gemini-Interpreter — это инструмент для взаимодействия с языковыми моделями, но построенный на основе **Gemini**. Он предназначен для выполнения команд на естественном языке, анализа данных, управления контекстом и автоматизации программирования с использованием мощного ИИ-движка.
+Gemini-Interpreter is a tool for interacting with language models built on **Gemini**. It is designed for executing natural language commands, data analysis, context management, and automating programming tasks using a powerful AI engine.
 
-## Основные возможности
+## Key Features
 
-- **Gemini Integration**: Использует модель Gemini для контекстуальной интерпретации команд и взаимодействия с пользователем. Это позволяет сделать проект бесплатным.
-- **Мультиязычная поддержка**: Возможность работать с несколькими языками программирования, а не только Python.
-- **Выполнение команд на естественном языке**: Пишите инструкции на естественном языке, а инструмент интерпретирует их и выполняет.
-- **Автоматизация рабочих процессов**: Генерация, выполнение и отладка кода, работа с файлами и базами данных, выполнение системных команд.
-- **Объяснение и оптимизация**: Объясняет действия и предлагает оптимальные решения задач.
+- **Gemini Integration**: Leverages the Gemini model for contextual interpretation of commands and user interaction, making the project cost-effective.
+- **Multilanguage Support**: Works with multiple programming languages, not just Python.
+- **Natural Language Command Execution**: Write instructions in natural language, and the tool interprets and executes them.
+- **Workflow Automation**: Code generation, execution, debugging, file and database management, and system command execution.
+- **Explanation and Optimization**: Explains actions and suggests optimal solutions for tasks.
 
-## Примеры использования
+## Use Cases
 
-- Генерация и выполнение кода на основе текстовых описаний.
-- Управление файлами и выполнение системных команд на основе естественного языка.
-- Автоматизация процессов программирования и анализа данных.
-- Образовательная платформа для изучения взаимодействия с ИИ.
+- Generate and execute code based on textual descriptions.
+- Manage files and execute system commands via natural language.
+- Automate programming and data analysis processes.
+- Serve as an educational platform for learning AI interactions.
 
-## Установка
+## Installation
 
-1. Склонируйте репозиторий:
+1. Clone the repository:
    ```bash
    git clone https://github.com/python-shik/gemini-interpreter.git
    cd gemini-interpreter
    ```
 
-2. Установите виртуальное окружение (рекомендуется):
+2. Set up a virtual environment (recommended):
    ```bash
    python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Установите зависимости:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-## Использование
+## Usage
 
-Запустите основной скрипт:
+Run the main script:
 ```bash
 python main.py
 ```
 
-### Пример взаимодействия
+### Interaction Examples
 
-- **Пример 1**: Выполнение команды на естественном языке.
+- **Example 1**: Executing a natural language command.
   ```
-  >>> Напиши функцию, которая вычисляет факториал числа.
-  Создано:
+  >>> Write a function that calculates the factorial of a number.
+  Generated:
   def factorial(n):
       if n == 0:
           return 1
       return n * factorial(n - 1)
   ```
 
-- **Пример 2**: Выполнение системной команды.
+- **Example 2**: Executing a system command.
   ```
-  >>> Создай новую папку "Проект" и перемести в неё файлы .txt.
-  Выполнено: Папка "Проект" создана, файлы .txt перемещены.
+  >>> Create a new folder "Project" and move all .txt files into it.
+  Executed: Folder "Project" created, .txt files moved.
   ```
 
-- **Пример 3**: Объяснение сложного кода.
+- **Example 3**: Explaining complex code.
   ```
-  >>> Объясни, что делает этот код: 
+  >>> Explain what this code does: 
   def quicksort(arr):
       if len(arr) <= 1:
           return arr
@@ -73,29 +74,27 @@ python main.py
       right = [x for x in arr if x > pivot]
       return quicksort(left) + middle + quicksort(right)
 
-  Ответ:
-  Этот код реализует алгоритм быстрой сортировки (quicksort), который рекурсивно сортирует список...
+  Response:
+  This code implements the quicksort algorithm, which recursively sorts a list...
   ```
 
-## Возможности для расширения
+## Expansion Opportunities
 
-- Поддержка дополнительных языков программирования.
-- Интеграция с внешними сервисами, например, для анализа данных или API-запросов.
-- Улучшение обработки естественного языка.
-- Создание веб-интерфейса для использования через браузер.
+- Support for additional programming languages.
+- Integration with external services for data analysis or API requests.
+- Improved natural language processing.
+- Development of a web interface for browser-based usage.
 
-## Вклад в проект
+## Contributing
 
-Мы открыты для ваших предложений и улучшений! Для участия:
-1. Форкните репозиторий.
-2. Создайте ветку с вашими изменениями:
+We welcome your suggestions and contributions! To contribute:
+1. Fork the repository.
+2. Create a branch with your changes:
    ```bash
    git checkout -b feature-name
    ```
-3. Отправьте Pull Request с описанием изменений.
+3. Submit a Pull Request with a description of your changes.
 
+## Contact
 
-## Контакты
-
-Если у вас есть вопросы или предложения, вы можете создать Issue или связаться с автором проекта.
-
+If you have questions or suggestions, feel free to create an Issue or contact the project author.
