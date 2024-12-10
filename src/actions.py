@@ -105,10 +105,6 @@ def update_api_key(ai : Gen, key: str) -> str:
 
 def get_ram() -> str:
     import sys, subprocess
-
-    if "psutil" not in sys.modules:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "psutil"])
-
     import psutil
 
     return "from_system||" + str({"ram": psutil.virtual_memory().percent})
