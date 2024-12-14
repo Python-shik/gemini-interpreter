@@ -1,6 +1,23 @@
 import os
 import requests
 import json
+import argparse
+from src.AI import prompts
+
+arg_parser = argparse.ArgumentParser(description="GeminiInterpreter")
+arg_parser.add_argument("--jailbreak", action="store_true", help="Jailbreak mode", default=False)
+arg_parser.add_argument("--temperature", type=float, default=1.0, help="Temperature")
+
+
+args = arg_parser.parse_args()
+settings = json.load(open("src/AI/settings.json", "r", encoding="utf-8"))
+
+for i in ["temperature", "jailbreak"]:
+    settings[i] = args.__dict__[i]
+
+
+with open("src/AI/settings.json", "w", encoding="utf-8") as f:
+    json.dump(settings, f, indent=4)
 
 
 class Gen:
@@ -31,7 +48,7 @@ class Gen:
 
     def history_add(self, role, content):
         """
-        Добавляет сообщение в историю диалога.
+        Add a message to the conversation history.
 
         Args:
             role (str): Роль отправителя сообщения.
@@ -43,6 +60,8 @@ class Gen:
         self.history.append({"role": role, "parts": [{"text": content}]})
 
     def generate(self):
+        settings = json.load(open("src/AI/settings.json", "r", encoding="utf-8"))
+
         """
 Генерирует текст на основе истории диалога из переменной Gen.history.
 
@@ -55,12 +74,29 @@ class Gen:
 
         if self.system_instructions:
             data["systemInstruction"] = {"role": "user", "parts": self.system_instructions}
+            if {"text": prompts.Instructions.jailbreak_instruction} not in self.system_instructions:
+                if settings["jailbreak"]:
+                    self.system_instructions.append({"text": prompts.Instructions.jailbreak_instruction})
+
+        data["generationConfig"] = {
+            "temperature": settings["temperature"]
+        }
+
+        if settings["jailbreak"] == True:
+            data["safetySettings"] = [
+                {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+                {"category": "HARM_CATEGORY_CIVIC_INTEGRITY", "threshold": "BLOCK_NONE"}
+            ]
 
         response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
         try:
             response.raise_for_status()
         except requests.exceptions.HTTPError as err:
             print(err)
+            print(response.json())
         result = str(response.json()["candidates"][0]["content"]["parts"][0]["text"])
 
         return result

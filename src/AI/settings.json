@@ -1,0 +1,8 @@
+{
+    "temperature": 1.0,
+    "jailbreak": true,
+    "top_k": 40.0,
+    "top_p": 0.95,
+    "max_output_tokens": 8192,
+    "repetition_penalty": 1.0
+}

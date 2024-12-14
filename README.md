@@ -1,4 +1,3 @@
-
 # Gemini-Interpreter
 
 Gemini-Interpreter is a tool for interacting with language models built on **Gemini**. It is designed for executing natural language commands, data analysis, context management, and automating programming tasks using a powerful AI engine.
@@ -6,7 +5,7 @@ Gemini-Interpreter is a tool for interacting with language models built on **Gem
 ## Key Features
 
 - **Gemini Integration**: Leverages the Gemini model for contextual interpretation of commands and user interaction, making the project cost-effective.
-- **Multilanguage Support**: Works with multiple programming languages, not just Python.
+- **Python Support**: Works Python.
 - **Natural Language Command Execution**: Write instructions in natural language, and the tool interprets and executes them.
 - **Workflow Automation**: Code generation, execution, debugging, file and database management, and system command execution.
 - **Explanation and Optimization**: Explains actions and suggests optimal solutions for tasks.
@@ -54,6 +53,10 @@ python main.py
       if n == 0:
           return 1
       return n * factorial(n - 1)
+
+  # Example input and output for clarity:
+  >>> factorial(5)
+  120
   ```
 
 - **Example 2**: Executing a system command.
@@ -78,10 +81,26 @@ python main.py
   This code implements the quicksort algorithm, which recursively sorts a list...
   ```
 
+### Jailbreak Mode
+
+You can try jailbreak mode with default jailbreak prompt.
+```bash
+python main.py --jailbreak
+```
+
+### Temperature set
+
+You can set the temperature of the Model. 
+(default: 1.0   min: 0.1   max: 2.0)
+```bash
+python main.py --temperature 0.7 
+```
+
+
 ## Expansion Opportunities
 
 - Support for additional programming languages.
-- Integration with external services for data analysis or API requests.
+- Integration with external services for data analysis or API requests, such as Google Cloud AI, AWS Lambda, or OpenAI APIs.
 - Improved natural language processing.
 - Development of a web interface for browser-based usage.
 

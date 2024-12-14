@@ -1,18 +1,22 @@
 import sys, pickle
 import time, json, os, subprocess
 import datetime
-from src.AI.BASE import Gen
+from src.AI.BASE import Gen, settings
+from src.AI import actions
 
 
 def user_output(ai):
     result = ai.history[-1]["parts"][0]["text"]
     to_print = result.split("||")[1]
 
-    to_print.replace("**", "")
+    to_print = to_print.replace("**", "")
 
-    print("[assistant] " + result.split("||")[1])
+    print("[assistant] " + to_print)
 
-    ai.export_history("conversations/history")
+    if settings["jailbreak"]:
+        ai.export_history("conversations/jailbreak_history")
+    else:
+        ai.export_history("conversations/history")
 
 
 def system_output(ai: Gen) -> str:
