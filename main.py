@@ -4,8 +4,7 @@ import os
 import sys
 import time
 import platform
-import fnc
-import src.AI.BASE
+from src import fnc
 from src.AI import prompts, actions
 from src.AI.BASE import Gen
 
